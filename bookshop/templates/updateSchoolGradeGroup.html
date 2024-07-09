@@ -1,0 +1,16 @@
+
+    <label for="schoolBoxid">Schools</label>
+    <select id="schoolBoxid" name="schoolBoxName" hx-get="api/updateGradeBox/" hx-target="#gradeForm2Div">
+    {% for school in schools %}
+        <option>{{school}}</option>
+    {% endfor %}
+    </select>
+
+    <div id="gradeForm2Div">
+        <label for="gradeBoxid">Grades</label>
+        <select id="gradeBoxid" name="gradeBoxName">
+        {% for grade in grades %}
+            <option>{{grade}}</option>
+        {% endfor %}
+        </select>
+    </div>

@@ -1,0 +1,43 @@
+<p>City: {{city}}</p>
+<p>School: {{school}}</p>
+<p>Grade: {{grade}}</p>
+
+    <table class="table table-hover" id="table-main">
+        <thead class="text-center" id="table-head">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px">Name</th>
+                <th scope="col" style="width: 250">Qty</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="text-center" id="table-body">
+            
+            {% for book in books %}
+
+                    <tr>
+                        <td>{{ book.pk }}</td>
+                        <td>{{ book.name }}</td>
+                        <td>
+                            <i hx-get="api/decrement/"
+                            hx-trigger="click"
+                            hx-target="#{{ book.name }}"
+                            hx-swap="innerHTML"
+                            hx-vals="js:{quantity: document.getElementById('{{ book.name }}').value}"
+                            class="fa fa-minus" aria-hidden="true"></i>
+                            <input class="ui input" type="number" id="{{ book.name }}" name="{{ book.name }}" style="width: 30px" value=1></input>
+                            <i hx-get="api/increment/"
+                            hx-trigger="click"
+                            hx-target="#{{ book.name }}"
+                            hx-swap="innerHTML"
+                            hx-vals="js:{quantity: document.getElementById('{{ book.name }}').value}"
+                            class="fa fa-plus" aria-hidden="true"></i>
+                        </td>
+                        <td>Price</td>
+                        <td>Remove</td>
+                    </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>

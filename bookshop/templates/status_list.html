@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Status List{% endblock title %}
+
+{% block content %}
+    <h2>Status List</h2> <br />
+    
+    {% if user.is_authenticated %}
+        <h4> Hello {{ user.email }} </h4> <br />
+        {% for status in object_list %}
+            {% if status.statusClient == user %}
+                <p>Updated on {{ status.statusDate }}</p>
+                <p>{{ status.statusText }}</p> <br /> <br />
+            {% endif %} 
+        {% endfor %}
+    {% else %}
+        <p>You are not logged in</p>
+    {% endif %}
+{% endblock content %}

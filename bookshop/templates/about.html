@@ -1,0 +1,11 @@
+<!-- templates/about.html -->
+{% extends '_base.html' %}
+{% block title %}About{% endblock title %}
+{% block content %}
+    <h2>About Page</h2>
+{% endblock content %}
+
+{% if status.statusClient == user %}
+<p>Updated on {{ status.statusDate }}</p>
+<p>{{ status.statusText }}</p> <br /> <br />
+{% endif %}

@@ -1,0 +1,48 @@
+{% extends '_base.html' %} 
+
+{% block content %}
+
+<h3>All Photos</h3>
+
+<style>
+  .pdfobject-container {
+     width: 200px;
+     height: 200px;
+     border-radius: 10px;
+  }
+</style>
+
+<br>
+
+<a class="button" href="{% url 'photo:create' %}">Add Button photo</a>
+
+<br>
+
+<div class="col-lg-3 col-md-4 col-xs-6" id="my-container"></div>
+
+<script src="https://unpkg.com/pdfobject"></script>
+<script> PDFObject.embed("{{ testfile.pdf }}", "#my-container");</script>
+
+<div class="row">
+  {% for photo in photos %}
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
+        <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" style="width:100px;height:100px;" style='border:2px solid #000000' />
+       <!-- <p style="margin-bottom:0em;">{{ photo.school }} - {{ photo.grade }}</p>
+        <p style="margin-bottom:0em;">{{ photo.subject }} - {{ photo.type }} - on - {{ photo.dateOfAssignment }}</p> -->
+      </a>
+    </div>
+  {% endfor %}
+
+  {% for assignment in assignments %}
+    <div class="col-lg-3 col-md-4 col-xs-6">
+      <a href="{% url 'photo:detail' assignment.id %}" class="d-block mb-4 h-100">
+        <img src="{{assignment.image.url}}" class="img-fluid rounded" alt="{{assignment.title}}" style="width:100px;height:100px;" style='border:2px solid #000000' />
+        <p style="margin-bottom:0em;">{{ assignment.school }} - {{ assignment.grade }}</p>
+        <p style="margin-bottom:0em;">{{ assignment.subject }} - {{ assignment.type }} - on - {{ assignment.dateOfAssignment }}</p>
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

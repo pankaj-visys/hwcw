@@ -1,0 +1,11 @@
+{% extends '_base.html' %} 
+
+{% block content %}
+        <form action="{% url 'list' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ form }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+{% endblock content %}

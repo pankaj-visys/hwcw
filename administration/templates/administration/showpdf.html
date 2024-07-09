@@ -1,0 +1,18 @@
+<style>
+  .pdfobject-container {
+     width: 300px;
+     height: 300px;
+     border-radius: 100px;
+  }
+
+  .my-container {
+     width: 300px;
+     height: 300px;
+     border-radius: 100px;
+  }
+</style>
+  
+  <div id="my-container"></div>
+
+  <script src="https://unpkg.com/pdfobject"></script>
+  <script> PDFObject.embed("testfile.pdf", "#my-container");</script>

@@ -1,0 +1,11 @@
+<select id="schools" name="school" hx-get="api/grade_list/" hx-target="#grades">
+{% for school in schools %}
+  <option>{{school}}</option>
+{% endfor %}
+</select>
+
+<select id="grades" name="grade">
+  {% for grade in grades %}
+    <option>{{grade}}</option>
+  {% endfor %}
+  </select>

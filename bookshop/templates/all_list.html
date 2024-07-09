@@ -1,0 +1,21 @@
+
+  <label >City-All</label>
+  <select id="cities" name="city" hx-get="api/school_list/" hx-target="#schools" hx-trigger="changed">
+    {% for city in cities %}
+      <option>{{city}}</option>
+    {% endfor %}
+  </select>
+
+  <label >School-All</label>
+  <select id="schools" name="school" hx-get="api/grade_list/" hx-target="#grades">
+    {% for school in schools %}
+      <option>{{school}}</option>
+    {% endfor %}
+  </select>
+
+  <label >Grade-All</label>
+  <select id="grades" name="grade">
+    {% for grade in grades %}
+      <option>{{grade}}</option>
+    {% endfor %}
+  </select>

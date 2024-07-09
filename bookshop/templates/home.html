@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <h2>Homepage</h2>
+    {% if user.is_authenticated %}
+        Hi {{ user.email }}!
+        </br>
+
+        <button hx-get="api/click_all_list/"
+            hx-trigger="click"
+            hx-target="#citySchoolGradeForm2Div"
+            hx-swap="innerHTML"
+            class="ui button">
+            CSG Form!
+            </button>
+
+        <!--This is form 2-->
+        <form id="form2" hx-get="api/book_List/"
+        hx-trigger="click"
+        hx-target="#bookList"
+        hx-swap="innerHTML">
+            </br>
+        
+            <div id="citySchoolGradeForm2Div">
+                <div id="schoolGradeForm2Div">
+                    <div id="gradeForm2Div">
+                    </div>
+                </div>        
+            </div>
+
+        </form>
+
+
+        
+        <div id="bookList">
+
+        </div>
+
+    {% else %}
+        <p>You are not logged in</p>
+    {% endif %}
+{% endblock content %}

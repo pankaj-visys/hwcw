@@ -1,0 +1,27 @@
+{% extends '_base.html' %} 
+
+{% block content %}
+
+<h3>Works</h3>
+
+<br>
+
+
+<br>
+
+<div class="row">
+  {% for work in works %}
+  
+  <div class="col-lg-3 col-md-4 col-xs-6">
+    <div class="ui card">
+    <a href="{% url 'work:detail' work.id %}" class="d-block mb-4 h-100">
+      <img src="{{work.workfile.url}}" class="img-fluid rounded" alt="{{work.title}}" style="width:100px;height:100px;" style='border:2px solid #000000' />
+    </a>
+    <!-- <h5>{{ work.title }}</h5> -->
+    <!-- <h5>{{ work.school }} - {{ work.grade }}</h5> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
